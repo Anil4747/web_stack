@@ -1,0 +1,23 @@
+<?php
+session_start();
+$server='localhost';
+$user='root';
+$pass='';
+$db = 'kunal';
+$username=$_POST['username'];
+$password=$_POST['password'];
+print_r($_POST);
+$conn = new mysqli($server,$user,$pass,$db);
+if($conn->connect_error){
+	die("Conn failed".$conn->connect_error);
+}
+$q="INSERT INTO kunal(name) VALUES('$username')";
+$res=$conn->query($q);
+if($res){
+	echo "success";
+}
+else {
+	echo "failed";
+}
+$conn->close();
+?>
